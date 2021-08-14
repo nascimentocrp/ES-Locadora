@@ -1,4 +1,4 @@
-package com.dcc603.locadora.java.com.dcc603.locadora.service;
+package com.dcc603.locadora.service;
 
 import java.util.List;
 
