@@ -2,16 +2,27 @@ package com.dcc603.locadora.models;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name = "locacao")
 public class Locacao {
     
+    @Id
     private int idFilme;
     
+    @Column(name = "data-locacao")
     private LocalDate dataLocacao;
     
+    @Column(name = "titulo")
     private LocalDate dataDevolucao;
     
+    @Column(name = "titulo")
     private Boolean isPago;
     
+    @Column(name = "titulo")
     private Boolean isEntregue;
     
     public int getIdFilme() {

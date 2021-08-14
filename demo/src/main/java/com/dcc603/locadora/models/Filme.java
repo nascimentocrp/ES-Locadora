@@ -2,20 +2,33 @@ package com.dcc603.locadora.models;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name = "filme")
 public class Filme {
     
+    @Id
     private int id;
 
+    @Column(name = "titulo")
     private String titulo;
 
-    private List<String> genero;
+    @Column(name = "genero")
+    private List<String> genero;//TODO @many to one
 
+    @Column(name = "midia")
     private String midia;
 
-    private List<String> diretor;
+    @Column(name = "diretor")
+    private List<String> diretor;//TODO @many to one
 
+    @Column(name = "valor-locacao")
     private Double valorLocacao;
     
+    @Column(name = "tempo-locacao")
     private int tempoLocacao;
 
     public int getId() {
@@ -73,6 +86,4 @@ public class Filme {
     public void setTempoLocacao(int tempoLocacao) {
         this.tempoLocacao = tempoLocacao;
     }
-
-
 }
