@@ -4,8 +4,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
 @Entity
 @Table(name = "filme")
 public class Filme {
@@ -16,20 +21,25 @@ public class Filme {
     @Column(name = "titulo")
     private String titulo;
 
+    @ManyToOne(fetch = FetchType.LAZY)
     @Column(name = "genero")
-    private List<String> genero;//TODO @many to one
+    private List<Genero> genero;
 
     @Column(name = "midia")
     private String midia;
 
+    @ManyToOne(fetch = FetchType.LAZY)
     @Column(name = "diretor")
-    private List<String> diretor;//TODO @many to one
+    private List<Diretor> diretor;
 
     @Column(name = "valor-locacao")
     private Double valorLocacao;
     
     @Column(name = "tempo-locacao")
     private int tempoLocacao;
+
+    @OneToOne(mappedBy = "filme")
+    private Locacao locacao;
 
     public int getId() {
         return id;
@@ -47,28 +57,12 @@ public class Filme {
         this.titulo = titulo;
     }
 
-    public List<String> getGenero() {
-        return genero;
-    }
-
-    public void setGenero(List<String> genero) {
-        this.genero = genero;
-    }
-
     public String getMidia() {
         return midia;
     }
 
     public void setMidia(String midia) {
         this.midia = midia;
-    }
-
-    public List<String> getDiretor() {
-        return diretor;
-    }
-
-    public void setDiretor(List<String> diretor) {
-        this.diretor = diretor;
     }
 
     public Double getValorLocacao() {
@@ -85,5 +79,21 @@ public class Filme {
 
     public void setTempoLocacao(int tempoLocacao) {
         this.tempoLocacao = tempoLocacao;
+    }
+
+    public List<Genero> getGenero() {
+        return genero;
+    }
+
+    public void setGenero(List<Genero> genero) {
+        this.genero = genero;
+    }
+
+    public List<Diretor> getDiretor() {
+        return diretor;
+    }
+
+    public void setDiretor(List<Diretor> diretor) {
+        this.diretor = diretor;
     }
 }

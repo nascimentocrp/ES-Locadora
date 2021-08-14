@@ -4,14 +4,20 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name = "locacao")
 public class Locacao {
     
     @Id
-    private int idFilme;
+    private int id;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    private Filme filme;
     
     @Column(name = "data-locacao")
     private LocalDate dataLocacao;
@@ -24,14 +30,9 @@ public class Locacao {
     
     @Column(name = "titulo")
     private Boolean isEntregue;
-    
-    public int getIdFilme() {
-        return idFilme;
-    }
 
-    public void setIdFilme(int idFilme) {
-        this.idFilme = idFilme;
-    }
+    @OneToMany(mappedBy = "listaLocacoes")
+    private Cliente cliente;
 
     public LocalDate getDataLocacao() {
         return dataLocacao;
@@ -63,6 +64,30 @@ public class Locacao {
 
     public void setIsEntregue(Boolean isEntregue) {
         this.isEntregue = isEntregue;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Filme getFilme() {
+        return filme;
+    }
+
+    public void setFilme(Filme filme) {
+        this.filme = filme;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
 }

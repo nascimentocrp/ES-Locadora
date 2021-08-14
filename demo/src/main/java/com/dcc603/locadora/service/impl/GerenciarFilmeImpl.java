@@ -1,10 +1,11 @@
-package com.dcc603.locadora.java.com.dcc603.locadora.service;
+package com.dcc603.locadora.service.impl;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.dcc603.locadora.models.Filme;
 import com.dcc603.locadora.repository.FilmeRepository;
+import com.dcc603.locadora.service.IGerenciar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
